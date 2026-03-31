@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The PokeBox</title>
+
+  <!-- Preconnect speeds up the Google Fonts request -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Bebas Neue = display/heading font | Outfit = body font -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────────── -->
+  <!-- Sticky top bar with logo mark and app title -->
+  <header>
+    <div id="headerInner">
+      <!-- Logo mark square -->
+      <div id="logoMark">PB</div>
+      <div>
+        <h1>THE POKÉBOX</h1>
+        <p class="subtitle">Competitive Team Builder</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN CONTENT ───────────────────────────────────────── -->
+  <main>
+
+    <!-- 6-slot team grid — each slot is one Pokémon position -->
+    <section id="teamGrid">
+
+      <!-- ── SLOT 1 ── -->
+      <div class="slot" id="slot0">
+        <!-- Top row: slot number + clear button (hidden until a Pokémon is loaded) -->
+        <div class="slotTop">
+          <span class="slotNum">01</span>
+          <button class="clearBtn" id="clear0" style="display:none">CLEAR</button>
+        </div>
+
+        <!-- Search row: input wrapped in inputWrap for dropdown positioning -->
+        <div class="searchRow">
+          <div class="inputWrap">
+            <input class="pokeInput" id="input0" type="text" placeholder="Search Pokémon..." autocomplete="off">
+            <!-- Autocomplete dropdown — populated by JS as user types -->
+            <div class="dropdown" id="drop0" style="display:none"></div>
+          </div>
+          <button class="searchBtn" id="btn0">GO</button>
+        </div>
+
+        <!-- Error message shown if Pokémon name is invalid -->
+        <p class="errorMsg" id="error0"></p>
+
+        <!-- Pokémon card — hidden until a valid Pokémon is fetched -->
+        <div class="pokeCard" id="card0" style="display:none">
+          <!-- Sprite image pulled from PokéAPI -->
+          <div class="spriteWrap" id="spriteWrap0">
+            <img class="pokeSprite" id="sprite0">
+          </div>
+          <!-- Name, type badges, and stat bars -->
+          <div class="pokeInfo">
+            <h2 class="pokeName" id="name0"></h2>
+            <div class="typeRow" id="types0"></div>   <!-- Type badges injected by JS -->
+            <div class="statsBlock" id="stats0"></div> <!-- Stat bars injected by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLOT 2 ── -->
+      <div class="slot" id="slot1">
+        <div class="slotTop">
+          <span class="slotNum">02</span>
+          <button class="clearBtn" id="clear1" style="display:none">CLEAR</button>
+        </div>
+        <div class="searchRow">
+          <div class="inputWrap">
+            <input class="pokeInput" id="input1" type="text" placeholder="Search Pokémon..." autocomplete="off">
+            <div class="dropdown" id="drop1" style="display:none"></div>
+          </div>
+          <button class="searchBtn" id="btn1">GO</button>
+        </div>
+        <p class="errorMsg" id="error1"></p>
+        <div class="pokeCard" id="card1" style="display:none">
+          <div class="spriteWrap" id="spriteWrap1">
+            <img class="pokeSprite" id="sprite1">
+          </div>
+          <div class="pokeInfo">
+            <h2 class="pokeName" id="name1"></h2>
+            <div class="typeRow" id="types1"></div>
+            <div class="statsBlock" id="stats1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLOT 3 ── -->
+      <div class="slot" id="slot2">
+        <div class="slotTop">
+          <span class="slotNum">03</span>
+          <button class="clearBtn" id="clear2" style="display:none">CLEAR</button>
+        </div>
+        <div class="searchRow">
+          <div class="inputWrap">
+            <input class="pokeInput" id="input2" type="text" placeholder="Search Pokémon..." autocomplete="off">
+            <div class="dropdown" id="drop2" style="display:none"></div>
+          </div>
+          <button class="searchBtn" id="btn2">GO</button>
+        </div>
+        <p class="errorMsg" id="error2"></p>
+        <div class="pokeCard" id="card2" style="display:none">
+          <div class="spriteWrap" id="spriteWrap2">
+            <img class="pokeSprite" id="sprite2">
+          </div>
+          <div class="pokeInfo">
+            <h2 class="pokeName" id="name2"></h2>
+            <div class="typeRow" id="types2"></div>
+            <div class="statsBlock" id="stats2"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLOT 4 ── -->
+      <div class="slot" id="slot3">
+        <div class="slotTop">
+          <span class="slotNum">04</span>
+          <button class="clearBtn" id="clear3" style="display:none">CLEAR</button>
+        </div>
+        <div class="searchRow">
+          <div class="inputWrap">
+            <input class="pokeInput" id="input3" type="text" placeholder="Search Pokémon..." autocomplete="off">
+            <div class="dropdown" id="drop3" style="display:none"></div>
+          </div>
+          <button class="searchBtn" id="btn3">GO</button>
+        </div>
+        <p class="errorMsg" id="error3"></p>
+        <div class="pokeCard" id="card3" style="display:none">
+          <div class="spriteWrap" id="spriteWrap3">
+            <img class="pokeSprite" id="sprite3">
+          </div>
+          <div class="pokeInfo">
+            <h2 class="pokeName" id="name3"></h2>
+            <div class="typeRow" id="types3"></div>
+            <div class="statsBlock" id="stats3"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLOT 5 ── -->
+      <div class="slot" id="slot4">
+        <div class="slotTop">
+          <span class="slotNum">05</span>
+          <button class="clearBtn" id="clear4" style="display:none">CLEAR</button>
+        </div>
+        <div class="searchRow">
+          <div class="inputWrap">
+            <input class="pokeInput" id="input4" type="text" placeholder="Search Pokémon..." autocomplete="off">
+            <div class="dropdown" id="drop4" style="display:none"></div>
+          </div>
+          <button class="searchBtn" id="btn4">GO</button>
+        </div>
+        <p class="errorMsg" id="error4"></p>
+        <div class="pokeCard" id="card4" style="display:none">
+          <div class="spriteWrap" id="spriteWrap4">
+            <img class="pokeSprite" id="sprite4">
+          </div>
+          <div class="pokeInfo">
+            <h2 class="pokeName" id="name4"></h2>
+            <div class="typeRow" id="types4"></div>
+            <div class="statsBlock" id="stats4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLOT 6 ── -->
+      <div class="slot" id="slot5">
+        <div class="slotTop">
+          <span class="slotNum">06</span>
+          <button class="clearBtn" id="clear5" style="display:none">CLEAR</button>
+        </div>
+        <div class="searchRow">
+          <div class="inputWrap">
+            <input class="pokeInput" id="input5" type="text" placeholder="Search Pokémon..." autocomplete="off">
+            <div class="dropdown" id="drop5" style="display:none"></div>
+          </div>
+          <button class="searchBtn" id="btn5">GO</button>
+        </div>
+        <p class="errorMsg" id="error5"></p>
+        <div class="pokeCard" id="card5" style="display:none">
+          <div class="spriteWrap" id="spriteWrap5">
+            <img class="pokeSprite" id="sprite5">
+          </div>
+          <div class="pokeInfo">
+            <h2 class="pokeName" id="name5"></h2>
+            <div class="typeRow" id="types5"></div>
+            <div class="statsBlock" id="stats5"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── WEAKNESS CHART ──────────────────────────────────── -->
+    <!-- Hidden until at least one Pokémon is added — JS shows it -->
+    <section id="weaknessSection" style="display:none">
+      <div id="weaknessHeader">
+        <h2 id="weaknessTitle">TEAM WEAKNESSES</h2>
+        <span id="weaknessNote">Types your team is exposed to</span>
+      </div>
+      <!-- Type weakness badges injected here by JS -->
+      <div id="weaknessChart"></div>
+    </section>
+
+  </main>
+
+  <!-- Script loaded at bottom so HTML is ready before JS runs -->
+  <script src="script.js"></script>
+</body>
+</html>
